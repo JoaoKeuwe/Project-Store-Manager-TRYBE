@@ -1,5 +1,6 @@
 const express = require('express');
 const controllerProducts = require('./controllers/controllerProducts');
+const controllerSales = require('./controllers/controllerSales');
 
 const app = express();
 
@@ -10,7 +11,11 @@ app.get('/', (_request, response) => {
 
 app.get('/products', controllerProducts.getAll);
 
-app.get('/products:id', controllerProducts.findById);
+app.get('/products/:id', controllerProducts.findById);
+
+app.get('/sales', controllerSales.getAll);
+
+app.get('/sales/:id', controllerSales.findById);
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
 // você deve usar o arquivo index.js para executar sua aplicação 

@@ -10,7 +10,11 @@ const getAll = async (req, res) => {
 
 const findById = async (req, res) => {
     const { id } = req.params;
-    const productsId = await productService.findById();
+    const [productsId] = await productService.findById(id);
+    console.log(productsId);
+    if (productsId === undefined) {
+        res.status(404).json({ message: 'Product not found' });
+    }
     res.status(200).json(productsId);
 };
 
