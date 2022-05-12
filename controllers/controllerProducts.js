@@ -8,6 +8,13 @@ const getAll = async (req, res) => {
     res.status(200).json(products);
 };
 
+const findById = async (req, res) => {
+    const { id } = req.params;
+    const productsId = await productService.findById();
+    res.status(200).json(productsId);
+};
+
 module.exports = {
     getAll,
+    findById,
 };

@@ -6,6 +6,12 @@ const getAll = async () => {
     return products;
 };
 
+const findById = async () => {
+    const products = await productsModel.findById();
+    return products;
+};
+
 module.exports = {
     getAll,
+    findById,
 };

@@ -7,6 +7,10 @@ const getAll = async () => {
     return product;
 };
 
+const FindById = async () => {
+    const query = SELECT * 
+}
+
 module.exports = {
     getAll,
 };
