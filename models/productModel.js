@@ -13,7 +13,27 @@ const findById = async (id) => {
     return products;
 };
 
+const createAll = async (name, quantity) => {
+    const query = 'insert into storemanager.products (name, quantity) values(?,?);';
+    const [product] = await connection.execute(query, [name, quantity]);    
+    return {
+        name,
+        quantity,
+        id: product.insertId,
+    };
+};
+
+const validName = async (name) => {
+    const query = `SELECT *
+    FROM storemanager.products
+    where name = ?`;
+    const equalName = await connection.execute(query, [name]);
+    return equalName;
+};
+
 module.exports = {
     getAll,
     findById,
+    createAll,
+    validName,
 };
