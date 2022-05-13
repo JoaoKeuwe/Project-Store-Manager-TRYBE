@@ -12,9 +12,9 @@ const findById = async (id) => {
 };
 
 const createAll = async (name, quantity) => {
-    if (name.length < 5) {
-        return { message: 'minimo carcateres', status: 409 };
-    }
+    //  if (name.length >= 5) {
+    //  return { message: 'minimo carcateres', status: 409 };
+    // }
     const valid = productsModel.validName(name);
     if (valid === undefined) {
         return { message: 'Product already exists', status: 409 };
