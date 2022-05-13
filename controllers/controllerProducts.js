@@ -1,4 +1,5 @@
 const productService = require('../services/productService');
+const productModel = require('../models/productModel');
 
 const getAll = async (req, res) => {
     const products = await productService.getAll();
@@ -20,8 +21,13 @@ const findById = async (req, res) => {
 
 const createAll = async (req, res) => {
     const { name, quantity } = req.body;
+    const [valid] = await productModel.validName(name);
+    console.log(valid);
+    if (valid.length > 0) {
+        return res.status(409).json({ message: 'Product already exists' });
+    }
     const create = await productService.createAll(name, quantity);
-    res.status(201).json(create);
+        res.status(201).json(create);
 };
 
 module.exports = {

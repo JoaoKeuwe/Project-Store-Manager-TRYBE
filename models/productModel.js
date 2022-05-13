@@ -14,7 +14,7 @@ const findById = async (id) => {
 };
 
 const createAll = async (name, quantity) => {
-    const query = 'insert into storemanager.products (name, quantity) values(?,?);';
+    const query = 'INSERT INTO StoreManager.products (name, quantity) values(?,?);';
     const [product] = await connection.execute(query, [name, quantity]);    
     return {
         name,
@@ -25,7 +25,7 @@ const createAll = async (name, quantity) => {
 
 const validName = async (name) => {
     const query = `SELECT *
-    FROM storemanager.products
+    FROM StoreManager.products
     where name = ?`;
     const equalName = await connection.execute(query, [name]);
     return equalName;
