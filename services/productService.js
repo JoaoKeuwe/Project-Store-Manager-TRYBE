@@ -43,9 +43,8 @@ const remove = async (id) => {
     if (findByIdd.length === 0) {
         return errorMessage('Product not found', 404);
     }
-    const removeProducts = await productsModel.remove(id);
-    return removeProducts;
-};
+    await productsModel.remove(id);
+    };
 
 module.exports = {
     getAll,
