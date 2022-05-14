@@ -42,6 +42,7 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
     const { id } = req.params;
     await productService.remove(id);
+    
     return res.status(204).end();
 };
 module.exports = {

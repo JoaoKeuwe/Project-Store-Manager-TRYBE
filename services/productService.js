@@ -1,6 +1,11 @@
 // Renomeie esse arquivo
 const productsModel = require('../models/productModel');
 
+const errorMessage = (message, status) => {
+    const messageError = { message, status };
+    return messageError;
+};
+
 const getAll = async () => {
     const products = await productsModel.getAll();
     return products;
@@ -34,6 +39,10 @@ const update = async (name, quantity, id) => {
 };
 
 const remove = async (id) => {
+    const findByIdd = await productsModel.findById(id);
+    if (findByIdd.length === 0) {
+        return errorMessage('Product not found', 404);
+    }
     const removeProducts = await productsModel.remove(id);
     return removeProducts;
 };
