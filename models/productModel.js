@@ -31,9 +31,18 @@ const validName = async (name) => {
     return equalName;
 };
 
+const update = async (name, quantity, id) => {
+    const query = `UPDATE products 
+    SET name = ?, quantity = ?
+    WHERE id = ?;`;
+    await connection.execute(query, [name, quantity, id]);
+    return { name, quantity, id };
+};
+
 module.exports = {
     getAll,
     findById,
     createAll,
     validName,
+    update,
 };

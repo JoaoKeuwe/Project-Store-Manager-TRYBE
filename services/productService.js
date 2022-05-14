@@ -23,9 +23,19 @@ const createAll = async (name, quantity) => {
     const service = await productsModel.createAll(name, quantity);
     return service;
 };
+const update = async (name, quantity, id) => {
+    const findByIdd = await productsModel.findById(id);
+     if (findByIdd.length === 0) {
+        return { message: 'Product not found', status: 404 };
+     }
+     
+    const productUpdate = await productsModel.update(name, quantity, id);
+    return productUpdate;
+};
 
 module.exports = {
     getAll,
     findById,
     createAll,
+    update,
 };
