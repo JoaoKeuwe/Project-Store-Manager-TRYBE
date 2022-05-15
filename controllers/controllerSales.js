@@ -19,10 +19,10 @@ const findById = async (req, res) => {
      res.status(200).json(salesServices);
 };
 
- const create = async (req, _res) => {
+ const create = async (req, res) => {
      const salesList = [...req.body];
      const productAdd = await salesService.create(salesList);
-     return productAdd;
+     res.status(201).json(productAdd);
  };
 
 module.exports = {
