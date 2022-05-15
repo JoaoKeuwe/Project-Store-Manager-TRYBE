@@ -15,8 +15,14 @@ const addProduct = async () => {
     return add;
 };
 
+const create = async (sales) => {
+    const createProduct = salesModel.create(sales);
+    return createProduct;
+};
+
 module.exports = {
     getAll,
     findById,
     addProduct,
+    create,
 };
