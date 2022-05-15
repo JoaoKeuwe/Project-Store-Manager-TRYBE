@@ -10,7 +10,13 @@ const findById = async (id) => {
     return sales;
 };
 
+const addProduct = async () => {
+    const add = salesModel.addProduct();
+    return add;
+};
+
 module.exports = {
     getAll,
     findById,
+    addProduct,
 };

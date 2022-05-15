@@ -44,6 +44,10 @@ const remove = async (id) => {
     await connection.execute(query, [id]);
 };
 
+// const addProduct = async () => {
+//     const query = 'INSERT INTO StoreManager.products';
+// };
+
 module.exports = {
     getAll,
     findById,
