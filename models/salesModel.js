@@ -27,7 +27,7 @@ const findById = async (id) => {
 };
 const getId = async () => {
     const [getAllSales] = await connection.execute('SELECT * FROM StoreManager.sales');
-    const response = await connection.execute(`INSERT INTO StoreManager.sales
+     const response = await connection.execute(`INSERT INTO StoreManager.sales
     (id) VALUES (?)`, [getAllSales.length + 1]);
     return response[0].insertId;
 };
