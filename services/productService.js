@@ -41,7 +41,7 @@ const update = async (name, quantity, id) => {
 const remove = async (id) => {
     const findByIdd = await productsModel.findById(id);
     if (findByIdd.length === 0) {
-        return errorMessage('Product not found', 404);
+        return { message: 'Product not found', status: 404 };
     }
     await productsModel.remove(id);
     };
