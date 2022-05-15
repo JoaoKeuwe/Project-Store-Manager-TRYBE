@@ -52,4 +52,5 @@ module.exports = {
     createAll,
     update,
     remove,
+    errorMessage,
 };
