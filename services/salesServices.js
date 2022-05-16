@@ -19,10 +19,16 @@ const create = async (sales) => {
     const createProduct = salesModel.create(sales);
     return createProduct;
 };
+// req 8
+const createSale = async (sales) => {
+    const updateSales = await salesModel.createSale(sales);
+    return updateSales;
+};
 
 module.exports = {
     getAll,
     findById,
     addProduct,
     create,
+    createSale,
 };

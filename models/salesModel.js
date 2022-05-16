@@ -32,7 +32,7 @@ const getId = async () => {
     return response[0].insertId;
 };
 const addSales = async (saleId, quantity, productId) => {
-    const [addAllSales] = await connection.execute(`INSERT INTO storemanager.sales_products
+    const [addAllSales] = await connection.execute(`INSERT INTO StoreManager.sales_products
      (sale_id, quantity, product_id) VALUES (?,?,?)`, [saleId, quantity, productId]);
      return addAllSales;
 };
@@ -41,10 +41,19 @@ const create = async (sales) => {
     sales.map(({ quantity, productId }) => addSales(id, quantity, productId));
     return { id, itemsSold: [...sales] };
 };
+// req8
+const createSale = async (quantity, productId, id) => {
+    await connection.execute(
+      `UPDATE sales_products SET quantity = ?, product_id = ?
+      WHERE sale_id = ?;`,
+      [quantity, productId, id],
+  );
+    };
 
 module.exports = {
     getAll,
     findById,
     create,
     addSales,
+    createSale,
 };
