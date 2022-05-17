@@ -42,18 +42,20 @@ const create = async (sales) => {
     return { id, itemsSold: [...sales] };
 };
 // req8
-const createSale = async (quantity, productId, id) => {
+    const updateSale = async (updateList, id) => {
+    console.log(updateList, id);
     await connection.execute(
-      `UPDATE sales_products SET quantity = ?, product_id = ?
-      WHERE sale_id = ?;`,
-      [quantity, productId, id],
-  );
-    };
+    `UPDATE sales_products SET quantity = ?, product_id = ?
+    WHERE sale_id = ?;`,
+    [updateList[0].quantity, updateList[0].productId, id],
+    ); 
+   return { saleId: Number(id), itemUpdated: updateList };
+     };
 
 module.exports = {
     getAll,
     findById,
     create,
     addSales,
-    createSale,
+    updateSale,
 };

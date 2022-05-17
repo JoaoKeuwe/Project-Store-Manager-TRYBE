@@ -24,11 +24,11 @@ app.post('/products', validName, validQuantity, controllerProducts.createAll);
 
 app.put('/products/:id', validName, validQuantity, controllerProducts.update);
 
-app.delete('/products/:id', controllerProducts.remove);
+ app.delete('/products/:id', controllerProducts.remove);
 
-app.post('/sales', controllerSales.create);
+ app.post('/sales', controllerSales.create);
 
-app.put('/sales/:id', controllerSales.createSale);
+ app.put('/sales/:id', controllerSales.updateSale);
 
 // app.post('/sales', controllerSales.)
 // não remova essa exportação, é para o avaliador funcionar

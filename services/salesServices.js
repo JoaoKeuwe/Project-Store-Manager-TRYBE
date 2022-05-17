@@ -20,15 +20,15 @@ const create = async (sales) => {
     return createProduct;
 };
 // req 8
-const createSale = async (sales) => {
-    const updateSales = await salesModel.createSale(sales);
-    return updateSales;
-};
+ const updateSale = async (updateList, id) => {
+     const updateSales = await salesModel.updateSale(updateList, id);
+     return updateSales;
+ };
 
 module.exports = {
     getAll,
     findById,
     addProduct,
     create,
-    createSale,
+    updateSale,
 };
