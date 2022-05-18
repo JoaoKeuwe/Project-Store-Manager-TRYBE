@@ -40,7 +40,7 @@ describe('2- testando função findById', async () => {
 });
 
 describe('3- testando função createAll', async () => {
-        const resultList = [[]]
+        const resultList = [{insertId:3}]
             before(() => {
                 sinon.stub(connection, 'execute')
                 .resolves(resultList)
@@ -50,12 +50,14 @@ describe('3- testando função createAll', async () => {
                 connection.execute.restore()
             });
         
-            it('retorna um array', async () => {
-                const response = await producstModel.findById()
+            it('retorna um objeto', async () => {
+                const name = 'keuwe'
+                const quantity = 30
+                const response = await producstModel.createAll(name, quantity)
         
-                expect(response).to.be.a("array")
+                expect(response).to.be.an("object")
             })
-        })
+})
 })
 
 
