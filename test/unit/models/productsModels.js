@@ -95,7 +95,23 @@ describe('product Models ', () => {
             expect(response).to.have.all.keys("name", "quantity", "id")
         })
 })
+    describe('6- testando função remove', async () => {
+    const resultList = [{}]
+        before(() => {
+            sinon.stub(connection, 'execute')
+            .resolves(resultList)
+        })
 
+        after(() => {
+            connection.execute.restore()
+        });
+    
+        it('confere se retorna um objeto vazio', async () => {
+        
+            const response = await producstModel.remove()
+            expect(response).to.be.an("object")
+        })
+})
 })
 
 
