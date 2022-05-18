@@ -74,7 +74,28 @@ describe('product Models ', () => {
                 expect(response).to.be.a("array")
             })
 })
+    describe('5- testando função update', async () => {
+    const resultList = [{}]
+        before(() => {
+            sinon.stub(connection, 'execute')
+            .resolves(resultList)
+        })
+
+        after(() => {
+            connection.execute.restore()
+        });
     
+        it('retorna um objeto com name, quantity e id', async () => {
+            const name= 'keuwe'
+            const quantity= 2
+            const id= 3
+        
+            const response = await producstModel.update(name, quantity, id)
+            expect(response).to.be.an("object")
+            expect(response).to.have.all.keys("name", "quantity", "id")
+        })
+})
+
 })
 
 
