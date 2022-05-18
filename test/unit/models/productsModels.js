@@ -21,6 +21,7 @@ describe('product Models ', () => {
             expect(response).to.be.a("array")
         })
     });
+
     describe('2- testando função findById', async () => {
         const resultList = [[]]
             before(() => {
@@ -38,6 +39,7 @@ describe('product Models ', () => {
                 expect(response).to.be.a("array")
             })
     });
+
     describe('3- testando função createAll', async () => {
             const resultList = [{insertId:3}]
                 before(() => {
@@ -56,7 +58,8 @@ describe('product Models ', () => {
             
                     expect(response).to.be.an("object")
                 })
-    })
+    });
+
     describe('4- testando função validName', async () => {
         const resultList = [[]]
             before(() => {
@@ -73,7 +76,8 @@ describe('product Models ', () => {
                 const response = await producstModel.validName()
                 expect(response).to.be.a("array")
             })
-})
+    });
+
     describe('5- testando função update', async () => {
     const resultList = [{}]
         before(() => {
@@ -94,7 +98,8 @@ describe('product Models ', () => {
             expect(response).to.be.an("object")
             expect(response).to.have.all.keys("name", "quantity", "id")
         })
-})
+    });
+
     describe('6- testando função remove', async () => {
     const resultList = [{}]
         before(() => {
@@ -111,7 +116,8 @@ describe('product Models ', () => {
             const response = await producstModel.remove()
             expect(response).to.be.an("object")
         })
-})
-})
+    });
+
+});
 
 
