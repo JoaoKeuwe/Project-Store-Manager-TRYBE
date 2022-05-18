@@ -42,7 +42,7 @@ describe('2- testando função findById', async () => {
 });
 
 describe('3- testando função getId', async () => {
-    const resultList = [[]]
+    const resultList = [{insertId: 2}]
         before(() => {
             sinon.stub(connection, 'execute')
             .resolves(resultList)
@@ -52,10 +52,10 @@ describe('3- testando função getId', async () => {
             connection.execute.restore()
         });
 
-        it('retorna um array', async () => {
+        it('retorna um número', async () => {
             const response = await salesModel.getId()
 
-            expect(response).to.be.a("array")
+            expect(response).to.be.a("number")
         })
 });
 

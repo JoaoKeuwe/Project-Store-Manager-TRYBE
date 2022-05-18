@@ -58,4 +58,37 @@ describe('2-chamada do controller get all ERROR', () => {
     })
 })
 
+describe('1-chamada do controller findById', () => {
+    describe('testando função findById', async () => {
+        const req = {}
+        const res= {}
+        req.params = {id: 1}
+
+        before(() => {
+            res.status = sinon.stub().returns(res)
+            res.json = sinon.stub().returns();
+            sinon.stub(productService, 'findById').resolves([]);
+        })
+
+        after(() => {
+            productService.findById.restore();
+        })
+        it('é chamado metodo "status" passando o codigo 200', async () => {
+            await productsController.findById(req, res)
+            expect(res.status.calledWith(200)).to.be.equal(true); 
+        })
+
+        it('é chamado metodo "status" passando o codigo 400', async () => {
+            await productsController.findById(req, res)
+            expect(res.status.calledWith(400)).to.be.equal(false);
+        })
+
+        it('é retornado um metodo json',async () => {
+            await productsController.findById(req, res)
+
+            expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
+        })
+    })
+})
+
 

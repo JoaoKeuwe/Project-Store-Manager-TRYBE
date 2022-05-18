@@ -54,6 +54,7 @@ const create = async (sales) => {
 
 module.exports = {
     getAll,
+    getId,
     findById,
     create,
     addSales,
