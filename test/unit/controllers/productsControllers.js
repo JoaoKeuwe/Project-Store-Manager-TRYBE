@@ -93,34 +93,29 @@ const productModel =require('../../../models/productModel');
         })
     })
 
-    describe('3-chamada do controller createAll', () => {
-        describe('testando função createAll', async () => {
-            const req = {}
-            const res= {}
+    // describe('3-chamada do controller createAll', () => {
+    //     describe('testando função createAll', async () => {
+    //         const req = {}
+    //         const res= {}
             
-            before(() => {
-                res.status = sinon.stub().returns(res)
-                res.json = sinon.stub().returns();
-                req.body = {name:'keuwe', quantity: 1}
-                sinon.stub(productService, 'createAll').resolves([]);
-            })
+    //         before(() => {
+    //             res.status = sinon.stub().returns(res)
+    //             res.json = sinon.stub().returns();
+    //             sinon.stub(productService, 'createAll').resolves([]);
+    //         })
 
-            after(() => {
-                productService.createAll.restore();
-            })
-            it('é chamado metodo "status" passando o codigo 201', async () => {
-                const test = await productsController.createAll(req, res)
-                console.log(test);
-                expect(res.status.calledWith(201)).to.be.equal(true); 
-            })
+    //         after(() => {
+    //             productService.createAll.restore();
+    //         })
+    //         it('é chamado metodo "status" passando o codigo 201', async () => {
+    //             const test = await productsController.createAll(req, res)
+    //             console.log(test);
+    //             expect(res.status.calledWith(201)).to.be.equal(true); 
+    //         })
 
-            it('é retornado um metodo json',async () => {
-                await productsController.createAll(req, res)
 
-                expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
-            })
-        })
-    })
+    //     })
+    // })
 
     describe('4-chamada do controller create all ERROR', () => {
         describe('testando função create all ERROR', async () => {
@@ -210,6 +205,27 @@ const productModel =require('../../../models/productModel');
         })
     })
 
+    describe('5-chamada do controller remove', () => {
+        describe('testando função remove', async () => {
+            const req = {}
+            const res= {}
+            req.params = {id: 3}
+            before(() => {
+                res.status = sinon.stub().returns(res)
+                res.json = sinon.stub().returns();
+                res.end = sinon.stub().returns();
+                sinon.stub(productService, 'remove').resolves(false);
+            })
+
+            after(() => {
+                productService.remove.restore();
+            })
+            it('é chamado metodo "status" passando o codigo 204', async () => {
+                await productsController.remove(req, res)
+                expect(res.status.calledWith(204)).to.be.equal(true); 
+            })
+        })
+    })
     
 
 
