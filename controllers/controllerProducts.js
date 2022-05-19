@@ -22,12 +22,11 @@ const findById = async (req, res) => {
 const createAll = async (req, res) => {
     const { name, quantity } = req.body;
     const [valid] = await productModel.validName(name);
-    console.log(valid);
     if (valid.length > 0) {
         return res.status(409).json({ message: 'Product already exists' });
     }
     const create = await productService.createAll(name, quantity);
-        res.status(201).json(create);
+       return res.status(201).json(create);
 };
 const update = async (req, res) => {
     const { name, quantity } = req.body;
