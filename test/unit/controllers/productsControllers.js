@@ -117,36 +117,36 @@ const productModel =require('../../../models/productModel');
     //     })
     // })
 
-    describe('4-chamada do controller create all ERROR', () => {
-        describe('testando função create all ERROR', async () => {
-            const req = {}
-            const res= {}
-            req.body = {name:'keuwe'}
-            req.body = { quantity: 1}
+    // describe('4-chamada do controller create all ERROR', () => {
+    //     describe('testando função create all ERROR', async () => {
+    //         const req = {}
+    //         const res= {}
+    //         req.body = {name:'keuwe'}
+    //         req.body = { quantity: 1}
 
-            before(() => {
-                res.status =sinon.stub().returns(res)
-                res.json =sinon.stub().returns();
-                sinon.stub(productModel, 'validName').resolves([{}]);
-                sinon.stub(productService, 'createAll').resolves({});
-            })
+    //         before(() => {
+    //             res.status =sinon.stub().returns(res)
+    //             res.json =sinon.stub().returns();
+    //             sinon.stub(productModel, 'validName').resolves([{}]);
+    //             sinon.stub(productService, 'createAll').resolves({});
+    //         })
 
-            after(() => {
-                productService.createAll.restore();
-                productModel.validName.restore()
-            })
-            it('é chamado metodo "status" passando o codigo 409', async () => {
-                await productsController.createAll(req, res)
-                console.log(res.status);
-                expect(res.status.calledWith(409)).to.be.equal(true);
-            })
-            it('retorna um json de erro quando tudo da certo', async () => {
-                await productsController.createAll(req, res);
-                expect(res.json.calledWith({message: 'Product already exists'})).to.be.equal(true);
-              });
+    //         after(() => {
+    //             productService.createAll.restore();
+    //             productModel.validName.restore()
+    //         })
+    //         it('é chamado metodo "status" passando o codigo 409', async () => {
+    //             await productsController.createAll(req, res)
+    //             console.log(res.status);
+    //             expect(res.status.calledWith(409)).to.be.equal(true);
+    //         })
+    //         it('retorna um json de erro quando tudo da certo', async () => {
+    //             await productsController.createAll(req, res);
+    //             expect(res.json.calledWith({message: 'Product already exists'})).to.be.equal(true);
+    //           });
           
-        })
-    })
+    //     })
+    // })
 
     describe('5-chamada do controller update', () => {
         describe('testando função update', async () => {
